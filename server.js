@@ -22,11 +22,9 @@ function getPostJsonParams(request, callback) {
 const server = http.createServer((req, res) => {
 	let location = 'frontend'
 	let serveFile = true
-	let contentType = 'application/json'
-  
-			contentType = 'text/html'
-			location += '/chatlayer-demo.html'
-			break;
+	let contentType = 'text/html'
+	
+	location += '/chatlayer-demo.html'
   
 	// starts writing the response.
 	res.writeHead(200, { 'content-type': contentType })
