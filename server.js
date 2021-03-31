@@ -20,7 +20,7 @@ function getPostJsonParams(request, callback) {
 }
 
 function placeOrder(paramJSON, callback) {
-	console.log('placing order')
+	console.log('placing order ' + paramJSON)
 	let order = {value:1050}
 	callback(order)
 }
