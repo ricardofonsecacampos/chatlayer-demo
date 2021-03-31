@@ -61,11 +61,9 @@ const server = http.createServer((req, res) => {
 							action: { nextDialogstate: "order-placed" },
 							session: {
 								namespace: 'order',
-								data: {
-									"order-price": orderPlaced.value
-								}
-							},
-						})
+								data: { "order-price": orderPlaced.value }
+							}
+						}
 						res.end(JSON.stringify(resJSON))
 					})
 				})
