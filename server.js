@@ -20,8 +20,8 @@ function getPostJsonParams(request, callback) {
 }
 
 function placeOrder(paramJSON, callback) {
-	console.log('placing order: ' + JSON.stringify(paramJSON))
-	console.log('placing order: ' + paramJSON.product + ', ' + paramJSON.quantity)
+	//console.log('placing order: ' + JSON.stringify(paramJSON))
+	//console.log('placing order: ' + paramJSON.product + ', ' + paramJSON.quantity)
 	let order = {value: ((100 * Math.random()) * paramJSON.quantity).toFixed(2)}
 	callback(order)
 }
