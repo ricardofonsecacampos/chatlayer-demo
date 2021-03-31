@@ -19,12 +19,31 @@ function getPostJsonParams(request, callback) {
 	}
 }
 
+function placeOrder(paramJSON, callback) {
+	console.log('placing order')
+	let order = {value:1050}
+	callback(order)
+}
+
 const server = http.createServer((req, res) => {
 	let location = 'frontend'
 	let serveFile = true
 	let contentType = 'text/html'
 	
-	location += '/chatlayer-demo.html'
+	switch (req.url) {
+		case '/place-order':
+			serveFile = false
+			break;
+		case '/styles.css':
+		case '/favicon.ico':
+		case '':
+		case '/':
+			contentType = 'text/html'
+			location += '/chatlayer-demo.html'
+			break;
+		default:
+			break;
+	}
   
 	// starts writing the response.
 	res.writeHead(200, { 'content-type': contentType })
@@ -32,6 +51,19 @@ const server = http.createServer((req, res) => {
 	// serve the requested file.
 	if (serveFile) {
 		fs.createReadStream(location).pipe(res)
+	
+	} else {
+		switch (req.url) {
+			case '/place-order':
+				getPostJsonParams(req, (param) => {
+					placeOrder(param, (orderPlaced) => {
+						res.end('')
+					})
+				})
+				break;
+			default: 
+					res.end()
+		}
 	}
 }).listen(PORT)
 
