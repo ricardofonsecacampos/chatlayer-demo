@@ -20,7 +20,8 @@ function getPostJsonParams(request, callback) {
 }
 
 function placeOrder(paramJSON, callback) {
-	console.log('placing order: ' + paramJSON.product + ', ' + paramJSON.quantity))
+	console.log('placing order: ' + JSON.stringify(paramJSON))
+	console.log('placing order: ' + paramJSON.product + ', ' + paramJSON.quantity)
 	let order = {value:1050}
 	callback(order)
 }
@@ -58,7 +59,7 @@ const server = http.createServer((req, res) => {
 				getPostJsonParams(req, (param) => {
 					placeOrder(param, (orderPlaced) => {
 						let resJSON = {
-							action: { nextDialogstate: "order-placed" },
+							action: { nextDialogstate: "order placed" },
 							session: {
 								namespace: 'order',
 								data: { "order-price": orderPlaced.value }
