@@ -57,7 +57,15 @@ const server = http.createServer((req, res) => {
 			case '/place-order':
 				getPostJsonParams(req, (param) => {
 					placeOrder(param, (orderPlaced) => {
-						res.end('')
+						  res.json({
+							  action: { nextDialogstate },
+							  session: {
+								  namespace: 'order',
+								  data: {
+									  "order-price": orderPlaced.value
+								  }
+							  },
+						  })
 					})
 				})
 				break;
