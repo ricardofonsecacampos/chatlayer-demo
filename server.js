@@ -59,7 +59,7 @@ const server = http.createServer((req, res) => {
 				getPostJsonParams(req, (param) => {
 					placeOrder(param, (orderPlaced) => {
 						let resJSON = {
-							action: { nextDialogstate: "order placed" },
+							action: { nextDialogstate: param.nextDialog },
 							session: {
 								namespace: 'order',
 								data: { "order-price": orderPlaced.value }
