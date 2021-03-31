@@ -58,7 +58,7 @@ const server = http.createServer((req, res) => {
 				getPostJsonParams(req, (param) => {
 					placeOrder(param, (orderPlaced) => {
 						  res.json({
-							  action: { "nextDialogstate" },
+							  action: { nextDialogstate: "order-placed" },
 							  session: {
 								  namespace: 'order',
 								  data: {
