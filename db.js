@@ -42,10 +42,10 @@ pool.query("create table if not exists roof_order (product varchar(40) not null,
   
   pool.query("commit", (err1, res1) => { });
   
-  //pool.query("insert into roof_order (product, quantity, order_date) values ('tiles', 25, current_date)",
-  //           (err2, res2) => {
-  //  if (err2) console.log(err2)
-  //});
+  pool.query("insert into roof_order (product, quantity, order_date) values ('tiles', 25, current_date)",
+             (err2, res2) => {
+    if (err2) console.log(err2)
+  });
   
   pool.query("commit", (err3, res3) => { });
 });
