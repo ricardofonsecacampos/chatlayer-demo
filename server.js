@@ -35,6 +35,7 @@ const server = http.createServer((req, res) => {
 	
 	switch (req.url) {
 		case '/place-order':
+		case '/list-order':
 			serveFile = false
 			break;
 		case '/styles.css':
@@ -69,6 +70,11 @@ const server = http.createServer((req, res) => {
 						}
 						res.end(JSON.stringify(resJSON))
 					})
+				})
+				break;
+			case '/list-order':
+				db.listOrder((orders) => {
+					res.end(JSON.stringify(orders))
 				})
 				break;
 			default: 
