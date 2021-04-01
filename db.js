@@ -35,8 +35,8 @@ const pool = new Pool(connectionString);
 pool.on('connect', () => console.log('db operation'));
 
 // assures the order table is OK.
-//pool.query("drop table roof_order",
-pool.query("create table if not exists roof_order (product varchar(40) not null, quantity smallint not null, order_date timestamp not null)",
+pool.query("drop table roof_order",
+//pool.query("create table if not exists roof_order (product varchar(40) not null, quantity smallint not null, order_date timestamp not null)",
            (err, res) => {
   if (err) console.log(err)
   pool.query("commit", (err1, res1) => { });
@@ -48,6 +48,6 @@ pool.query("create table if not exists roof_order (product varchar(40) not null,
   //pool.query("commit", (err3, res3) => { });
 });
 
-listOrder((rows) => console.log(rows))
+//listOrder((rows) => console.log(rows))
 
-module.exports = { listOrder }
+module.exports = { listOrder, saveOrder }
