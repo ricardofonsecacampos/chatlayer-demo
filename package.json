@@ -12,6 +12,6 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "pg": "^13.2"
+    "pg": "^8.5.1"
   }
 }
