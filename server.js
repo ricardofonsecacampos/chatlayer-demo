@@ -6,6 +6,8 @@ const http = require('http')
 const fs = require('fs')
 // Parse request parameters.
 const {parse} = require('querystring');
+// Parse request parameters.
+const {db} = require('./db.js');
 
 // use the port Heroku indicates
 const PORT = process.env.PORT || 3000
