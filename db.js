@@ -1,4 +1,5 @@
 const { Pool } = require('pg');
+console.log('importou pg')
 
 connectionString = {
   connectionString: process.env.DATABASE_URL,
