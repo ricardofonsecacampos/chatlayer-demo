@@ -8,7 +8,6 @@ const fs = require('fs')
 const {parse} = require('querystring');
 // Parse request parameters.
 const {db} = require('./db.js');
-console.log('importou db')
 
 // use the port Heroku indicates
 const PORT = process.env.PORT || 3000
