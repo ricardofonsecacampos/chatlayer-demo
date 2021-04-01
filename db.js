@@ -27,7 +27,7 @@ function saveOrder(order) {
   // it's not right to create the pool always.
   connect();
   
-  pool.query("insert into roof_order (product, quantity, value, order_date) values ('" + order.product + "', " + order.quantity + ", " + order.value + ", current_time)",
+  pool.query("insert into roof_order (product, quantity, value, order_date) values ('" + order.product + "', " + order.quantity + ", " + order.value + ", current_date)",
              (err, res) => {
     if (err) console.log(err)
     pool.end()
@@ -55,7 +55,7 @@ pool.query("create table if not exists roof_order (product varchar(40) not null,
 
 // sample data.
 //connect();
-//pool.query("insert into roof_order (product, quantity, value, order_date) values ('tiles', 25, 180.55, current_time)",
+//pool.query("insert into roof_order (product, quantity, value, order_date) values ('tiles', 25, 180.55, current_date)",
 //           (err, res) => {
 //  if (err) console.log(err)
 //  pool.end()
