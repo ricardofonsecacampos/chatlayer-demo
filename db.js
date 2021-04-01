@@ -19,7 +19,7 @@ function listOrder(callback) {
 
 // list all submited orders.
 function saveOrder(order) {
-  pool.query("insert into roof_order (product, quantity, order_date) values ('" + order.product + "', " + order.quantity + ", current_date)",
+  pool.query("insert into roof_order (product, quantity, value, order_date) values ('" + order.product + "', " + order.quantity + ", current_date)",
              (err, res) => {
     if (err) console.log(err)
     //pool.end()
@@ -35,13 +35,13 @@ const pool = new Pool(connectionString);
 pool.on('connect', () => console.log('db operation'));
 
 // assures the order table is OK.
-pool.query("drop table roof_order",
-//pool.query("create table if not exists roof_order (product varchar(40) not null, quantity smallint not null, order_date timestamp not null)",
+//pool.query("drop table roof_order",
+pool.query("create table if not exists roof_order (product varchar(40) not null, quantity smallint not null, value float not null, order_date timestamp not null)",
            (err, res) => {
   if (err) console.log(err)
   pool.query("commit", (err1, res1) => { });
   
-  //pool.query("insert into roof_order (product, quantity, order_date) values ('tiles', 25, current_date)",
+  //pool.query("insert into roof_order (product, quantity, value, order_date) values ('tiles', 25, 180.55, current_date)",
   //           (err2, res2) => {
   //  if (err2) console.log(err2)
   //});
