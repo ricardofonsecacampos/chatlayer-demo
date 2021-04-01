@@ -41,13 +41,13 @@ pool.query("create table if not exists roof_order (product varchar(40) not null,
   if (err) console.log(err)
   pool.query("commit", (err1, res1) => { });
   
-  //pool.query("insert into roof_order (product, quantity, value, order_date) values ('tiles', 25, 180.55, current_date)",
-  //           (err2, res2) => {
-  //  if (err2) console.log(err2)
-  //});
-  //pool.query("commit", (err3, res3) => { });
+  pool.query("insert into roof_order (product, quantity, value, order_date) values ('tiles', 25, 180.55, current_date)",
+             (err2, res2) => {
+    if (err2) console.log(err2)
+  });
+  pool.query("commit", (err3, res3) => { });
 });
 
-//listOrder((rows) => console.log(rows))
+listOrder((rows) => console.log(rows))
 
 module.exports = { listOrder, saveOrder }
