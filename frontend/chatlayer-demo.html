@@ -1,22 +1,53 @@
 <html>
 <head>
 	<title>Chatlayer Chatbots Demo</title>
+	
 	<style>
 		.order {
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr 1fr;
 			max-width: 400px;
 			margin: auto;
-		}
-		
-		.pokemon {
-			border: 1px solid #777;
-			padding: 10px;
-			background: #f5f5f5;
-			text-align: center;
-		}
-		
+		}		
 	</style>
+	
+	<script>
+		function updateOrders(orders) {
+			let outer = document.getElementById('orders')
+			let list = document.getElementById('order-list')
+			
+			// clears the order's list.
+			outer.removeChild(list)
+			
+			// sets the list outer div
+			let item = document.createElement('div')
+			item.setAttribute('id', 'order-list')
+			outer.appendChild(item)
+			outer = item
+
+			// pushs order's data.
+			orders.forEach((order) => {
+				item = document.createElement('div')
+				item.setAttribute('class', 'order')
+				//item.setAttribute('id', 'order-1')
+				outer.appendChild(item)
+
+				setDivText(item, order.order_date)
+				setDivText(item, order.product)
+				setDivText(item, order.quantity)
+				setDivText(item, Number(order.value).toFixed(2))
+				item.setAttribute('title', 'Order details')
+			})
+		}
+		
+		function setDivText(outer, data) {
+			let div = document.createElement('div')
+			div.innerText = data
+			outer.appendChild(div)
+		}
+		
+		
+	</script>
 </head>
 	
 <body>
@@ -31,7 +62,7 @@
 	</script>
 	
 	
-	<div align="left" id="orders">
+	<div align="center" id="orders">
 		<div style="color: blue;"><b>Orders</b></div>
 		<div class="order">
 			<div title="When">Date</div>
@@ -40,7 +71,7 @@
 			<div title="Total price">Price</div>
 		</div>
 		<div id="order-list">
-			<div class="order" id="order1">
+			<div class="order">
 				<div>2021-04-01</div>
 				<div>tiles</div>
 				<div>16080</div>
