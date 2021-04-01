@@ -34,6 +34,17 @@ function saveOrder(order) {
   });
 }
 
+// delete all orders.
+function deleteOrder() {
+  // it's not right to create the pool always.
+  connect();
+  
+  pool.query("delete from roof_order", (err, res) => {
+    if (err) console.log(err)
+    pool.end()
+  });
+}
+
 // creates the connection to the database.
 function connect() {
   pool = new Pool(connectionString);
@@ -63,4 +74,4 @@ pool.query("create table if not exists roof_order (product varchar(40) not null,
 
 listOrder((rows) => console.log(rows))
 
-module.exports = { listOrder, saveOrder }
+module.exports = { listOrder, saveOrder, deleteOrder }
