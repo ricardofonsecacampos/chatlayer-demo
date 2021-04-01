@@ -35,6 +35,8 @@ pool.query("create table if not exists roof_order (product varchar(40) not null,
              (err1, res1) => {
     if (err1) console.log(err1)
   });
+  
+  pool.query("commit", (err2, res2) => { });
 });
 
 listOrder((rows) => console.log(rows))
