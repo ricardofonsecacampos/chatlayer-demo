@@ -9,6 +9,7 @@ connectionString = {
 
 // list all submited orders.
 function listOrder(callback) {
+  //pool.query("select * from pg_catalog.pg_database",
   pool.query("select * from roof_order", (err, res) => {
     if (err) console.log(err)
     else callback(res.rows)
@@ -29,12 +30,11 @@ pool.on('connect', () => console.log('db operation'));
 pool.query("create table if not exists roof_order (product varchar(40) not null, quantity smallint not null, order_date date not null)",
            (err, res) => {
   if (err) console.log(err)
-});
-
-//pool.query("select * from pg_catalog.pg_database",
-pool.query("insert into roof_order (product, quantity, order_date) values ('tiles', 25, current_date)",
-           (err, res) => {
-  if (err) console.log(err)
+  
+  pool.query("insert into roof_order (product, quantity, order_date) values ('tiles', 25, current_date)",
+             (err1, res1) => {
+    if (err1) console.log(err1)
+  });
 });
 
 listOrder((rows) => console.log(rows))
