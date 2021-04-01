@@ -6,6 +6,9 @@ connectionString = {
   ssl: true
 };
 
+// avoid self signed certificate problem.
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+
 const pool = new Pool(connectionString);
 pool.on('connect', () => console.log('connected to db'));
 
