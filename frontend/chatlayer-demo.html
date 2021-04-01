@@ -14,7 +14,7 @@
 	<script>
 		// fetches the orders list from the service and calls callback function.
 		function getOrders(callback) {
-			fetch(('https://fuzzytrader-app.herokuapp.com/list-order'), { method: "GET" })
+			fetch(('https://chatlayer-demo.herokuapp.com//list-order'), { method: "GET" })
 				.then(function (response) {
 				response.json()
 					.then(function (list) {	callback(list) })
