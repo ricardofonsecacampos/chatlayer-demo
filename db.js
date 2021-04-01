@@ -13,7 +13,7 @@ function listOrder(callback) {
   pool.query("select * from roof_order", (err, res) => {
     if (err) console.log(err)
     else callback(res.rows)
-    //pool.end()
+    pool.end()
   });
 }
 
@@ -22,7 +22,7 @@ function saveOrder(order) {
   pool.query("insert into roof_order (product, quantity, value, order_date) values ('" + order.product + "', " + order.quantity + ", " + order.value + ", current_date)",
              (err, res) => {
     if (err) console.log(err)
-    //pool.end()
+    pool.end()
   });
 }
 
