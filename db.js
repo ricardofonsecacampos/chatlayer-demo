@@ -17,6 +17,15 @@ function listOrder(callback) {
   });
 }
 
+// list all submited orders.
+function saveOrder(order) {
+  pool.query("insert into roof_order (product, quantity, order_date) values ('" + order.product + "', " + order.quantity + ", current_date)",
+             (err, res) => {
+    if (err) console.log(err)
+    //pool.end()
+  });
+}
+
 // avoid self signed certificate problem.
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 
