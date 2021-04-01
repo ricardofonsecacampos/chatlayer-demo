@@ -1,16 +1,50 @@
 <html>
 <head>
-	<link rel="stylesheet" href="styles.css">
 	<title>Chatlayer Chatbots Demo</title>
+	<style>
+		.order {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+			max-width: 400px;
+			margin: auto;
+		}
+		
+		.pokemon {
+			border: 1px solid #777;
+			padding: 10px;
+			background: #f5f5f5;
+			text-align: center;
+		}
+		
+	</style>
 </head>
+	
 <body>
 	<h1>Welcome to Green Roof</h1>
 	<p><br></p>
+	
 	<script
 		src="https://chatbox.staging.europe-west1.gc.chatlayer.ai/sdk/605f86ac6a6dfd854b4f6796"
 		referrerpolicy="no-referrer-when-downgrade"
 		onload='chatlayer({"withCloseButton":"true"})'
 		async>
 	</script>
+	
+	
+	<div align="center" id="orders">
+		<div style="color: blue;"><b>Orders</b></div>
+		<div class="order">
+			<div title="When">Date</div>
+			<div title="Product">Product</div>
+			<div title="Quantity">Quantity</div>
+			<div title="Total price">Price</div>
+		</div>
+		<div class="order" id="order1">
+			<div>2021-04-01</div>
+			<div>tiles</div>
+			<div>16080</div>
+			<div>3534</div>
+		</div>
+	</div>
 </body>
 </html>
