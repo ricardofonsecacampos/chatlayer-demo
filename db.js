@@ -3,11 +3,11 @@ console.log('importou pg')
 
 connectionString = {
   connectionString: process.env.DATABASE_URL,
-  ssl: false
+  ssl: true
 };
 
 // avoid self signed certificate problem.
-//process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 
 const pool = new Pool(connectionString);
 pool.on('connect', () => console.log('connected to db'));
